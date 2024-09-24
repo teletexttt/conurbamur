@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conurbamur</title>
+
+    <!-- Importar las fuentes "Roboto" y "Pacifico" desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Aplicar la fuente "Roboto" */
+            background-color: #ff5bceaf; /* Color de fondo gris oscuro */
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            height: 100vh; /* Ocupa toda la ventana */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #242323b9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive; /* Aplicar la fuente "Pacifico" solo al título */
+            color: #ff00ff; /* Color fuccia */
+            text-shadow: 2px 2px 3px black; /* Sombra leve en negro */
+        }
+
+        .pixel-container {
+            margin: 20px;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pixel-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px; /* Borde redondeado */
+        }
+
+        .button {
+            background-color: #14131388; /* Tonalidad similar al gris b8aca9 */
+            color: rgb(255, 0, 234);
+            padding: 10px 30px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #272726; /* Un tono más oscuro al pasar el ratón */
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Conurbamour</h1>
+    <p>¡Encontrá tu match del conurbano!</p>
+
+    <div class="pixel-container">
+        <img id="pixel-art" src="00.jpg" alt="Pixel Art Personaje">
+    </div>
+
+    <div>
+        <button class="button" onclick="nextPerson(false)">No me gusta</button>
+        <button class="button" onclick="nextPerson(true)">Me gusta</button>
+    </div>
+
+    <footer>© 2024 Conurbamour - ¡Que el amor del conurbano te acompañe!</footer>
+</div>
+
+<script>
+    // Array de imágenes de "personas" en pixel art con nombres 00.jpg, 01.jpg, 02.jpg
+    const pixelArtImages = [
+        "00.jpg",
+        "01.jpg",
+        "02.jpg"
+    ];
+
+    // Índice para seguir la "persona" actual
+    let currentPerson = 0;
+
+    // Función para mostrar la siguiente "persona"
+    function nextPerson(liked) {
+        const pixelImg = document.getElementById("pixel-art");
+
+        // Mensaje si se hace "Me gusta"
+        if (liked) {
+            alert("¡Le diste like a este personaje!");
+        }
+
+        // Cambia a la siguiente persona
+        currentPerson = (currentPerson + 1) % pixelArtImages.length; // Cíclico
+        pixelImg.src = pixelArtImages[currentPerson];
+    }
+</script>
+
+</body>
+</html>
